@@ -46,7 +46,11 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
 
         int idMove = Integer.parseInt(userInput.next());
-        if (idMove == 0){
+        if (idMove == 0) {
+            System.exit(0);
+        }
+        if (idMove > args.length) {
+            System.out.println("Out of bounds, please, choose available move\n");
             System.exit(0);
         }
         System.out.println("You're move :" + args[idMove - 1]);
@@ -62,25 +66,26 @@ public class Main {
         } else {
             System.out.println("User win!");
         }
-        System.out.println("Secret key: " + secretKey);
+        System.out.println("Secret key: " + secretKey + "\n");
     }
 
     public static void checkParams(String[] params) {
         if (params.length % 2 == 0) {
             System.out.println("an odd number of arguments is required");
-            System.out.println("For example: rock paper scissors");
+            System.out.println("For example: rock paper scissors\n");
             System.exit(0);
         }
-        if(params.length < 3){
+        if (params.length < 3) {
             System.out.println("at least 3 parameters are required");
-            System.out.println("For example: rock paper scissors");
+            System.out.println("For example: rock paper scissors\n");
+            System.exit(0);
         }
         Set<String> set = new HashSet<>();
 
         for (String a : params) {
             if (!set.add(a)) {
                 System.out.println("The strings must be different. You have duplicates in your input");
-                System.out.println("For example: rock paper scissors");
+                System.out.println("For example: rock paper scissors\n");
                 System.exit(0);
             }
         }
